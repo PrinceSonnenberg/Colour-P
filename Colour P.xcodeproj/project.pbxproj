@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		641A19F627D30CB4003A0106 /* ColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641A19F527D30CB4003A0106 /* ColorCell.swift */; };
 		64E5E80327C339320068FFD6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E5E80227C339320068FFD6 /* AppDelegate.swift */; };
 		64E5E80527C339320068FFD6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E5E80427C339320068FFD6 /* SceneDelegate.swift */; };
 		64E5E80727C339320068FFD6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E5E80627C339320068FFD6 /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		641A19F527D30CB4003A0106 /* ColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
 		64E5E7FF27C339320068FFD6 /* Colour P.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Colour P.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		64E5E80227C339320068FFD6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64E5E80427C339320068FFD6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				64E5E80227C339320068FFD6 /* AppDelegate.swift */,
 				64E5E80427C339320068FFD6 /* SceneDelegate.swift */,
 				64E5E80627C339320068FFD6 /* ViewController.swift */,
+				641A19F527D30CB4003A0106 /* ColorCell.swift */,
 				64E5E80827C339320068FFD6 /* Main.storyboard */,
 				64E5E80B27C339680068FFD6 /* Assets.xcassets */,
 				64E5E80D27C339690068FFD6 /* LaunchScreen.storyboard */,
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				64E5E80727C339320068FFD6 /* ViewController.swift in Sources */,
+				641A19F627D30CB4003A0106 /* ColorCell.swift in Sources */,
 				64E5E80327C339320068FFD6 /* AppDelegate.swift in Sources */,
 				64E5E80527C339320068FFD6 /* SceneDelegate.swift in Sources */,
 			);
@@ -216,7 +220,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -271,7 +275,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

@@ -7,15 +7,21 @@
 
 import UIKit
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
 
     @IBOutlet weak var colourCollection: UICollectionView!
     @IBOutlet weak var dropperBtn: UIButton!
     @IBOutlet weak var colourSegments: UISegmentedControl!
     @IBOutlet weak var opacityLevel: UISlider!
-    @IBOutlet weak var pickedColour: UILabel!
+    @IBOutlet weak var pickedColour: UIView!
     @IBOutlet weak var opacityPercentage: UILabel!
+    
+    var randomC = ColorCell()
+    
+    var pickedColourcell = UIColor()
+    
+    var celllabels = [" ", " ", " ", ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +29,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         sliderSettings()
         colourCollection.dataSource = self
         self.view.layoutIfNeeded() //loads before viewdidload
-        
+        //collectionViewLayoutModification()
+        randomC.populateColor()
     }
 
     @IBAction func opacitySlider(_ sender: UISlider){
@@ -46,23 +53,30 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 13
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "colorCell", for: indexPath) //as? CellColor
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "colorCell", for: indexPath) as? ColorCell
         
-        collectionViewLayoutModification()
-        cell.contentView.backgroundColor = .blue
-        return cell
+        //ColorCell.populateColor(cell!)
+        
+        return cell!
         
     }
     
     
+    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
+//        {
+//            return CGSize(width: 5, height: 5
+//            )
+//        }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        pickedColour.backgroundColor = .red
+      
         
     }
     class CustomSlider: UISlider {
@@ -73,42 +87,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     
-    
-    
-    
-    
-    func createColour(){}
-    
+
     //creat rgb base vals, insert in loop, return colour=
     
-    
-    
-//    func randomColor() -> UIColor {
-//
-//        var randomRed:CGFloat = 0.0
-//        var randomGreen:CGFloat = 0.0
-//        var randomBlue:CGFloat = 0.0
-//        let nonRandomAlpha:CGFloat = 1.0
-//
-//        // reject colors that are too dark -- colors //
-//        // are rejected 0.35/3 = %11.6 of the time   //
-//        while ( randomRed + randomGreen + randomBlue < 0.30) {
-//
-//            // for each color channel we generate a random number //
-//
-//            randomRed = CGFloat(drand48())
-//            randomGreen = CGFloat(drand48())
-//            randomBlue = CGFloat(drand48())
-//        }
-//
-//        // build and return a color object   //
-//        // with the generated random numbers //
-//        return UIColor(red: randomRed,
-//          green: randomGreen,
-//          blue: randomBlue,
-//          alpha: nonRandomAlpha)
-//
-//    }
+
 
     func collectionViewLayoutModification() -> UICollectionViewFlowLayout {
         
@@ -116,6 +98,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             //4
         //1
         let rowItems = 13
+        
 
         let cellWidth = self.colourCollection.bounds.width / CGFloat(rowItems)
 
@@ -127,7 +110,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         //3
         myLayout.sectionInset = UIEdgeInsets.zero
         myLayout.minimumLineSpacing = 1
-        myLayout.minimumInteritemSpacing = 0
+        myLayout.minimumInteritemSpacing = 1
 
 
         colourCollection.collectionViewLayout = myLayout
