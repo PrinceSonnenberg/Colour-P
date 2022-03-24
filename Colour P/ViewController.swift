@@ -17,20 +17,23 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var pickedColour: UIView!
     @IBOutlet weak var opacityPercentage: UILabel!
     
-    var randomC = ColorCell()
+    var Array: [UIColor] = []
     
-    var pickedColourcell = UIColor()
+    //var randomC = ColorCell()
+      
+  //  var pickedColourcell = UIColor()
     
-    var celllabels = [" ", " ", " ", ]
+  //  var celllabels = [" ", " ", " ", ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
        
+        Array = populateColor()
         sliderSettings()
         colourCollection.dataSource = self
         self.view.layoutIfNeeded() //loads before viewdidload
-        //collectionViewLayoutModification()
-        randomC.populateColor()
+        collectionViewLayoutModification()
+        
     }
 
     @IBAction func opacitySlider(_ sender: UISlider){
@@ -48,7 +51,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 13
+        return Array.count
         
     }
     
@@ -60,7 +63,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "colorCell", for: indexPath) as? ColorCell
         
-        //ColorCell.populateColor(cell!)
+        
+        cell?.backgroundColor = Array[indexPath.row]
         
         return cell!
         
@@ -88,7 +92,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     
 
-    //creat rgb base vals, insert in loop, return colour=
+    
     
 
 
@@ -126,6 +130,43 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         opacityLevel.setMaximumTrackImage(UIImage(named: "sliderback"),for: .normal)
         opacityLevel.value = 100
         opacityLevel.isEnabled = true
+    }
+    
+    
+    //creat rgb base vals, insert in loop, return colour
+    
+    func populateColor()-> [UIColor] {
+    
+            var hue: Float
+            var sat: Float
+            var val: Float
+
+        var colorArray : [UIColor] = []
+                // there are 10 rows
+        for row in 0...9 {
+                    // saturation begins at 1 | if Row is 0, then saturation is 0
+            sat = min((1.3 - Float((row - 1)) * 0.13), 1)
+                    // min -> if a number is larger than 1, we take 1
+
+            val = min((0.2 + Float((row - 1)) * 0.13), 1)
+                    // min -> if a number is larger than 1, we take 1
+
+                    // there are 12 columns
+            for col in 0...11 {
+                        // for each, column, we have to move on the color circle by about 30 degrees
+                        // however, I found 25 to be better
+                hue = (Float(((col * 25) + 180)%(360))) / 360.0
+
+            let col = UIColor(hue: CGFloat(hue), saturation: CGFloat(sat), brightness: CGFloat(val), alpha: 1.0)
+           
+             colorArray.append(col)
+                
+            print ("Hue: \(hue) | Sat: \(sat) | Val: \(val)")
+                
+            }
+               
+    }
+        return colorArray
     }
 }
 
